@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>쉬운 블로그 글쓰기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>✍️ 쉬운 블로그 글쓰기</h1>
+    <p>주제만 넣으면 글 틀이 나와요. 빈칸을 채우고 <b>네이버에 붙여넣기</b> 하세요.</p>
+  </header>
+
+  <main class="layout">
+    <section class="col">
+      <!-- 1단계 -->
+      <div class="card">
+        <h2><span class="num">1</span> 어떤 글인가요?</h2>
+        <div id="cats" class="cats"></div>
+        <label class="lbl" for="topic">주제</label>
+        <input id="topic" type="text" placeholder="예) 강릉 초당순두부, 다이슨 청소기">
+        <label class="lbl" for="tone">말투</label>
+        <select id="tone">
+          <option value="friendly">친근한 이웃 말투 (~했어요)</option>
+          <option value="info">깔끔한 정보 말투 (~합니다)</option>
+        </select>
+        <label class="lbl" for="memo">꼭 넣을 내용 <small>(선택 · 내가 직접 겪은 것)</small></label>
+        <textarea id="memo" rows="3" placeholder="예) 웨이팅 20분, 순두부젤라또 꼭 먹기, 주차장 좁음"></textarea>
+
+        <div class="gpt-box">
+          <p class="step-mini"><b>ChatGPT로 쓰기</b></p>
+          <ol class="mini-steps">
+            <li>
+              <button id="btnWrite" class="primary big" type="button">✍️ 글쓰기</button>
+              <small class="hint-s">ChatGPT가 새 탭에서 열리고 질문이 자동으로 들어가요. 질문이 안 보이면 입력칸에 Ctrl+V 하세요. (질문은 복사도 돼 있어요)</small>
+            </li>
+            <li>ChatGPT 답변이 끝나면 <b>답변 전체를 복사</b>해서 여기에 붙여넣기
+              <textarea id="gptPaste" rows="5" placeholder="ChatGPT 답변을 여기에 붙여넣으세요"></textarea>
+              <button id="btnImport" class="primary" type="button">글 가져오기</button>
+            </li>
+          </ol>
+        </div>
+
+        <button id="btnStart" class="sub-btn" type="button">ChatGPT 없이 빈 글 틀로 직접 쓰기</button>
+      </div>
+
+      <!-- 2단계 -->
+      <div class="card">
+        <h2><span class="num">2</span> 제목 고르기</h2>
+        <div id="titleList" class="title-list"><p class="hint">1단계에서 글 틀을 만들면 제목 후보가 나와요.</p></div>
+        <label class="lbl" for="title">제목 (직접 고쳐도 돼요)</label>
+        <input id="title" type="text" placeholder="제목">
+      </div>
+
+      <!-- 3단계 -->
+      <div class="card">
+        <h2><span class="num">3</span> 본문 채우기</h2>
+        <p class="hint"><code>[[ ]]</code> 칸을 내 이야기로 바꿔주세요. 빈 줄로 문단을 나눠요.</p>
+        <div class="tools">
+          <button id="btnPhoto" type="button">📷 사진 자리 넣기</button>
+          <button id="btnHead" type="button">■ 소제목 넣기</button>
+        </div>
+        <textarea id="body" rows="18" placeholder="여기에 본문이 들어가요"></textarea>
+        <div id="checks" class="checks"></div>
+        <label class="lbl" for="tags">태그 (띄어쓰기로 구분)</label>
+        <input id="tags" type="text" placeholder="#맛집 #강릉">
+        <label class="opt"><input id="center" type="checkbox" checked> 가운데 정렬로 복사</label>
+      </div>
+    </section>
+
+    <section class="col">
+      <!-- 4단계 -->
+      <div class="card sticky">
+        <h2><span class="num">4</span> 네이버에 붙여넣기</h2>
+        <div class="copy-btns">
+          <button id="cpTitle">제목 복사</button>
+          <button id="cpBody" class="primary">본문 복사</button>
+          <button id="cpTags">태그 복사</button>
+        </div>
+        <p id="toast" class="toast" aria-live="polite"></p>
+        <p class="hint">네이버 블로그 글쓰기 → 제목칸·본문칸에 <b>Ctrl+V</b>. 회색 사진 자리에 사진을 넣으면 끝!</p>
+        <h3 class="pv-label">미리보기</h3>
+        <div class="phone">
+          <div id="pvTitle" class="pv-title"></div>
+          <div id="preview" class="pv-body"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="templates.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
